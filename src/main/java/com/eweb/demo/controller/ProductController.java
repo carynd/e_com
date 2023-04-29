@@ -2,6 +2,7 @@ package com.eweb.demo.controller;
 
 import com.eweb.demo.common.ApiResponse;
 import com.eweb.demo.dto.ProductDto;
+import com.eweb.demo.model.Category;
 import com.eweb.demo.model.Product;
 import com.eweb.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,17 @@ public class ProductController {
     }
 
     @GetMapping("/list")
-    public List<Product> listProducts(){
-        return productService.listProducts();
+    public ResponseEntity<List<ProductDto>> listProducts(){
+        return new ResponseEntity<>(productService.listProducts(),HttpStatus.OK);
+    }
+
+    @PostMapping("/update/{productId}")
+    public ResponseEntity<ApiResponse> updateProduct(@PathVariable("productId") Integer productId,@RequestBody ProductDto productDto){
+        Product prd=productService.updateProduct(productId,productDto);
+        if(prd!=null){
+            return new ResponseEntity<>(new ApiResponse(true,"updated successfully"),HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new ApiResponse(false,"no id found"), HttpStatus.NOT_FOUND);
+
     }
 }
