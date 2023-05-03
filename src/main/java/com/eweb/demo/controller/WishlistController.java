@@ -24,12 +24,11 @@ public class WishlistController {
         return new ResponseEntity<>(productDtos, HttpStatus.OK);
     }
 
+
+    //another to add products to wishlist
     @PostMapping("/add/product/{productId}")
     public ResponseEntity<ApiResponse> addToWishlist(@PathVariable("productId") Integer productId, @RequestParam("token") String token){
         return wishlistService.addToWishlist(productId,token);
     }
-    //another to add products to wishlist
-
-
 
 }

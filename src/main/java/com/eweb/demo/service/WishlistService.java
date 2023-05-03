@@ -32,6 +32,7 @@ public class WishlistService {
         authenticationTokenService.authenticate(token);//null check
         User user=authenticationTokenService.getUserFromToken(token);//find the user using the token
         Optional<Product> product=productService.getProduct(productId);
+
         //check if product already exists for that user accordingly add
         Wishlist list = wishlitsRepo.findByUserAndProduct(user, Optional.of(product.get()));
         if(Objects.isNull(list)){
@@ -39,6 +40,7 @@ public class WishlistService {
             wishlitsRepo.save(wishlist);
             return new ResponseEntity<>(new ApiResponse(true,"Added product to wishist"), HttpStatus.CREATED);
         }
+
        return new ResponseEntity<>(new ApiResponse(false,"Product already added"),HttpStatus.BAD_REQUEST);
     }
 
