@@ -1,16 +1,18 @@
 package com.eweb.demo.service;
 
 import com.eweb.demo.dto.ProductDto;
+import com.eweb.demo.exceptions.CustomException;
 import com.eweb.demo.model.Category;
 import com.eweb.demo.model.Product;
 import com.eweb.demo.repository.CategoryRepo;
 import com.eweb.demo.repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
-import javax.transaction.UserTransaction;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -44,7 +46,7 @@ public class ProductService {
         return prdDto;
     }
 
-    private ProductDto convertToDroductDto(Product product) {
+    ProductDto convertToDroductDto(Product product) {
         ProductDto productDto = new ProductDto();
         productDto.setId(product.getId());
         productDto.setName(product.getName());
@@ -72,5 +74,13 @@ public class ProductService {
             return prd;
         }
         return null;
+    }
+
+    public Optional<Product> getProduct(Integer productId) {
+        Optional<Product> product=productRepo.findById(productId);
+        if(ObjectUtils.isEmpty(product)){
+            throw new CustomException("No such product id exists");
+        }
+        return product;
     }
 }
