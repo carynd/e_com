@@ -20,8 +20,8 @@ public class WishlistController {
     //one to see wishlist items for user
     @GetMapping("/{token}")
     public ResponseEntity<List<ProductDto>> getWishlist(@PathVariable("token") String token){
-        List<ProductDto> productDtos=wishlistService.getWishlist(token);
-        return new ResponseEntity<>(productDtos, HttpStatus.OK);
+        List<ProductDto> productDto=wishlistService.getWishlist(token);
+        return new ResponseEntity<>(productDto, HttpStatus.OK);
     }
 
 

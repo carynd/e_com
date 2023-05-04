@@ -1,4 +1,4 @@
-package com.eweb.demo.dto;
+package com.eweb.demo.dto.SignUserDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

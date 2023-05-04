@@ -1,9 +1,9 @@
 package com.eweb.demo.service;
 
 import com.eweb.demo.dto.ResponseDto;
-import com.eweb.demo.dto.SignInDto;
-import com.eweb.demo.dto.SignInResponseDto;
-import com.eweb.demo.dto.SignUpDto;
+import com.eweb.demo.dto.SignUserDto.SignInDto;
+import com.eweb.demo.dto.SignUserDto.SignInResponseDto;
+import com.eweb.demo.dto.SignUserDto.SignUpDto;
 import com.eweb.demo.exceptions.AuthenticationFailed;
 import com.eweb.demo.exceptions.CustomException;
 import com.eweb.demo.model.AuthenticationToken;
