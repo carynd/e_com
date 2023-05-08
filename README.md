@@ -1,4 +1,4 @@
-# e_com
+# e_com(updated code in shopping_cart branch)
 Spring Boot Backend Application for an e-commerce website which has a MySql database.
 
 
